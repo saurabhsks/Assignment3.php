@@ -43,12 +43,16 @@
       <td><?php echo $row["firstname"]?></td>
       <td><?php echo $row["mobile"]?></td>
       <td><?php echo $row["course_id"]?></td>
-      <td>
-      <!-- <a id="myLink" href="updates.php?id=<?php echo $row['id'] ?>" style="display: none;"><button type="button" class="btn btn-primary">Update</button></a> -->
+      <!-- <td>
+    
       <a href="Update_user.php?id=<?php echo $row["id"]?>"><button type="button" class="btn btn-danger">Update</button></td>
       <td>
         
        <a href="Delete.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-danger">Delete</button></a>
+    </td> -->
+    <td>
+        
+       <a href="add_marks.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-danger">Add Marks</button></a>
     </td>
     </tr>
 
