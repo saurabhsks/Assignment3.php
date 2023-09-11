@@ -4,6 +4,7 @@ include "connection.php";
 
 
 //Inserting data
+$id=$_GET["id"];
 $marks = $_POST["marks"];
 $student_id =$_POST["student_id"];
 $subject_id=$_POST["subject_id"];

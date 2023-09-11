@@ -12,7 +12,7 @@
 
  <body>
     <br/>
- <button onclick="document.location='student_add.php'" class="btn btn-primary">ADD student</button>
+ <button onclick="document.location='add_student.php'" class="btn btn-primary">ADD student</button>
  <br/>
 
 
@@ -52,7 +52,7 @@
     </td> -->
     <td>
         
-       <a href="add_marks.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-danger">Add Marks</button></a>
+       <a href="add_marks.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-success">Add Marks</button></a>
     </td>
     </tr>
 

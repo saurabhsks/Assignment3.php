@@ -44,15 +44,12 @@
         }
     </style>
 
-    
-
-
-
     <br/>
     <form action="insert_marks.php" method="post">
-    
+
+
     <div class="dropdown">
-        <label for="subject">Select a Subject:</label>
+        <label for="subject">Subject:</label>
         <select id="subject" name="subject">
             <option value="math">Physics</option>
             <option value="science">Chemistry</option>
