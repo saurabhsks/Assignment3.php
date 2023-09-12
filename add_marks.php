@@ -45,32 +45,35 @@
     </style>
 
     <br/>
-    <form action="insert_marks.php" method="post">
+    <?php
+    $id=$_GET["id"];
+    $course_id=$_GET["course_id"];
 
+    ?>
+    <form action="insert_marks.php?id=<?php echo $id?>" method="post">
 
-    <div class="dropdown">
-        <label for="subject">Subject:</label>
-        <select id="subject" name="subject">
-            <option value="math">Physics</option>
-            <option value="science">Chemistry</option>
-            <option value="history">Maths</option>
-            <option value="english">Computer Science</option>
-            <option value="english">English</option>
-        </select>
-    </div>
+   
+    <div class="form-group">
+            <label for="exampleInputNumber">Subject: </label>
+            <?php
+           include "connection.php";
+            $sql = "SELECT * FROM subject where $course_id=course_id";
+            $result = mysqli_query($conn, $sql);
+            ?>
+            <select name="subject_id" id="exampleInputNumber">
+            <?php if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {?>
+            <option value=<?php echo $row["id"]?>><?php echo $row["name"]?></option>
+            <?php }}?>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Marks</label>
             <input type="text" name="marks" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your marks" required>
         </div>
-        <!-- <div class="form-group">
-            <label for="exampleInputPassword1">student id</label>
-            <input type="text" name="student_id" class="form-control" id="exampleInputmodile1" placeholder="Enter student id" required>
-        </div> -->
-        <div class="form-group">
-            <label for="exampleInputPassword1">subject id</label>
-            <input type="text" name="subject_id" class="form-control" id="exampleInputcourse1" placeholder="Enter subject id" required>
-        </div>
+       
+        <!-- <a href="insert_marks.php?id=<?php echo $id?>"> <button type="button" class="btn btn-danger">Submit</button></a> -->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </body>

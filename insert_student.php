@@ -6,9 +6,10 @@ include "connection.php";
 //Inserting data
 $firstname = $_POST["name"];
 $mobile =$_POST["mobile"];
-$course_id=$_POST["course_id"];
+$course_name=$_POST["course_name"];
+$course_id=$_POST["id"];
 
-$sql = "INSERT INTO student (firstname, mobile, course_id)
+$sql = "INSERT INTO student (firstname, mobile,course_id)
 VALUES ('$firstname','$mobile','$course_id')";
 
 if (mysqli_query($conn, $sql)) {
@@ -16,5 +17,5 @@ if (mysqli_query($conn, $sql)) {
 }
 
 mysqli_close($conn);
-
+header("location:students_display.php");
 ?>

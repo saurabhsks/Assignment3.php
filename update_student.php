@@ -11,27 +11,39 @@
 </head>
 
 <body>
+<?php
+include "connection.php";
+$id=$_GET["id"];
+
+$sql = "SELECT * FROM student WHERE id=$id";
+$result = mysqli_query($conn, $sql); 
+
+$arrdata=mysqli_fetch_assoc($result);
+
+mysqli_close($conn);
+?>
     <br/>
-    <form action="insert_student.php" method="post">
+    <form action="update_std_query.php?id=<?php echo $id ?>" method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your name" required>
+            <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your name" value="<?php echo $arrdata["firstname"]?>" required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Mobile</label>
-            <input type="text" name="mobile" class="form-control" id="exampleInputmodile1" placeholder="Enter your mobile number" required>
+            <input type="text" name="mobile" class="form-control" id="exampleInputmodile1" placeholder="Enter your mobile number" value="<?php echo $arrdata["mobile"]?>" required>
         </div>
         <div class="form-group">
             <label for="exampleInputNumber">Course: </label>
             <?php
-           include "connection.php";
+          include "connection.php";
             $sql = "SELECT * FROM course";
             $result = mysqli_query($conn, $sql);
             ?>
-            <select name="id" id="exampleInputNumber">
+            <select name="id" id="exampleInputNumber" value="<?php echo $arrdata["course_name"]?>">
             <?php if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {?>
             <option value=<?php echo $row["id"]?>><?php echo $row["course_name"]?></option>
+            <!-- <option value=<?php echo $row["id"]?>><?php echo $row["course_name"]?></option> -->
             <?php }}?>
             </select>
         </div>

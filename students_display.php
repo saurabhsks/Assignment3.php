@@ -13,23 +13,37 @@
  <body>
     <br/>
  <button onclick="document.location='add_student.php'" class="btn btn-primary">ADD student</button>
+ <button onclick="document.location='add_course.php'" class="btn btn-primary">ADD course</button>
+ <button onclick="document.location='add_coordinator.php'" class="btn btn-primary">ADD coordinator</button>
  <br/>
 
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
+      <!-- <th scope="col">id</th> -->
       <th scope="col">Name</th>
       <th scope="col">Mobile</th>
-      <th scope="col">course id</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Coordinator Name</th>
       <th scope="col">Action</th>
     </th>
     </tr>
   </thead>
   <tbody>
     <?php  include "connection.php";
-        $sql = "SELECT * FROM student";
+         $sql = "SELECT * FROM student";
+
+        // $sql = "SELECT student.firstname, student.mobile, course.course_name, coordinator.coordinator_name
+        // FROM student
+        // INNER JOIN course  ON student.course_id = course.id
+        // INNER JOIN coordinator ON student.coordinator_id = coordinator.coordinator_id";
+
+// $sql = "SELECT s.firstname, s.mobile, c.course_name, co.coordinator_name
+// FROM student s
+// INNER JOIN course c ON s.course_id = c.course_id
+// INNER JOIN coordinator co ON s.coordinator_id = co.id";
+
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
@@ -39,20 +53,39 @@
 
 ?>
     <tr>
-      <td><?php echo $row["id"]?></td>
+      <!-- <td><?php echo $row["id"]?></td> -->
       <td><?php echo $row["firstname"]?></td>
       <td><?php echo $row["mobile"]?></td>
-      <td><?php echo $row["course_id"]?></td>
-      <!-- <td>
+
+      <td><?php 
+      $course=$row["course_id"];
+      $sql="SELECT * FROM course INNER JOIN student ON $course=course.id";
+      $res = mysqli_query($conn, $sql);
+      $row1=mysqli_fetch_assoc($res);
+      echo $row1["course_name"]
+     ?></td>
+
+     <td><?php 
+      $coordinator=$row1["coordinator_id"];
+      $sql="SELECT * FROM coordinator INNER JOIN course ON $coordinator=coordinator.id";
+      $res= mysqli_query($conn, $sql);
+      $row2=mysqli_fetch_assoc($res);
+      echo $row2["coordinator_name"]
+     ?></td>
+
+      <!-- <td><?php echo $row["course_name"]?></td>
+      <td><?php echo $row["coordinator_name"]?></td> -->
+
+      <td>
     
-      <a href="Update_user.php?id=<?php echo $row["id"]?>"><button type="button" class="btn btn-danger">Update</button></td>
+      <a href="update_student.php?id=<?php echo $row["id"]?>"><button type="button" class="btn btn-light">Update</button></td>
       <td>
         
-       <a href="Delete.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-danger">Delete</button></a>
-    </td> -->
+       <a href="delete_display.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-danger">Delete</button></a>
+    </td>
     <td>
         
-       <a href="add_marks.php?id=<?php echo $row["id"]?>"> <button type="button" class="btn btn-success">Add Marks</button></a>
+       <a href="add_marks.php?id=<?php echo $row["id"]?> & course_id=<?php echo $row["course_id"]?>"> <button type="button" class="btn btn-success">Add Marks</button></a>
     </td>
     </tr>
 
