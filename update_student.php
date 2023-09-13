@@ -34,18 +34,33 @@ mysqli_close($conn);
         </div>
         <div class="form-group">
             <label for="exampleInputNumber">Course: </label>
+
             <?php
-          include "connection.php";
-            $sql = "SELECT * FROM course";
-            $result = mysqli_query($conn, $sql);
-            ?>
-            <select name="id" id="exampleInputNumber" value="<?php echo $arrdata["course_name"]?>">
-            <?php if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {?>
-            <option value=<?php echo $row["id"]?>><?php echo $row["course_name"]?></option>
-            <!-- <option value=<?php echo $row["id"]?>><?php echo $row["course_name"]?></option> -->
-            <?php }}?>
-            </select>
+// Assuming you have established a database connection earlier
+include "connection.php";
+$sql = "SELECT * FROM course";
+$result = mysqli_query($conn, $sql);
+
+// Get the currently selected course for the user (replace with your actual query)
+$selectedCourseId = $arrdata["course_id"];
+
+?>
+<select name="course_id" id="exampleInputNumber">
+    <?php
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $courseId = $row["id"];
+            $courseName = $row["course_name"];
+            $selected = ($courseId == $selectedCourseId) ? 'selected' : '';
+    ?>
+            <option value="<?php echo $courseId; ?>" <?php echo $selected; ?>><?php echo $courseName; ?></option>
+    <?php
+        }
+    }
+    ?>
+</select>
+
+           
         </div>
         <!-- <div class="form-group">
             <label for="exampleInputPassword1">course id</label>
@@ -56,3 +71,19 @@ mysqli_close($conn);
 </body>
 
 </html>
+
+
+
+
+  <!-- <?php
+          include "connection.php";
+          $sql = "SELECT * FROM course";
+          $result = mysqli_query($conn, $sql);
+          ?>
+          <select name="id" id="exampleInputNumber" value="<?php echo $arrdata["course_name"]?>">
+          <?php if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {?>
+          <option value=<?php echo $row["id"]?>><?php echo $row["course_name"]?></option>
+         
+          <?php }}?>  -->
+          <!-- </select>  -->
