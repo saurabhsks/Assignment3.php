@@ -11,17 +11,26 @@
 </head>
 
 <body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Your existing head content -->
+</head>
+
+<body>
+    
     <br/>
-    <form action="insert_student.php" method="post">
-        <div class="form-group">
+    <form action="insert_student.php" method="post" onsubmit="return validateForm()">
+        <div class="form-group" >
             <label for="exampleInputEmail1">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your name" required>
+            <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your name" required  style="width: 20%;">
         </div>
-        <div class="form-group">
+        <div class="form-group" >
             <label for="exampleInputPassword1">Mobile</label>
-            <input type="text" name="mobile" class="form-control" id="exampleInputmodile1" placeholder="Enter your mobile number" required>
-        </div>
-        <div class="form-group">
+            <input type="text" name="mobile" class="form-control" id="exampleInputmobile1" placeholder="Enter your mobile number" required  style="width: 20%;">
+               </div>
+        <div class="form-group" >
             <label for="exampleInputNumber">Course: </label>
             <?php
            include "connection.php";
@@ -35,12 +44,34 @@
             <?php }}?>
             </select>
         </div>
-        <!-- <div class="form-group">
-            <label for="exampleInputPassword1">course id</label>
-            <input type="password" name="course_id" class="form-control" id="exampleInputcourse1" placeholder="Enter your course id" required>
-        </div> -->
+        
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("exampleInputname").value;
+            var mobile = document.getElementById("exampleInputmobile1").value;
+         
+            // expression to check if the name contains only alphabets
+            var namePattern = /^[A-Za-z\s]+$/;
+
+            //  expression to check if the mobile number contains only digits and is 10 characters long
+            var mobilePattern = /^\d{10}$/;
+
+            if (!namePattern.test(name)) {
+                alert("Name should contain only alphabets.");
+                return false;
+            }
+
+            if (!mobilePattern.test(mobile)) {
+                alert("Mobile number should contain only 10 digits.");
+                return false;
+            }
+
+            return true; // Form will be submitted if both validations pass
+        }
+    </script>
 </body>
 
 </html>

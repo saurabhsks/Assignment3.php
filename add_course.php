@@ -12,10 +12,10 @@
 
 <body>
     <br/>
-    <form action="insert_course.php" method="post">
+    <form action="insert_course.php" method="post" onsubmit="return validateForm()" >
         <div class="form-group">
             <label for="exampleInputEmail1">Course</label>
-            <input type="text" name="course_name" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your name" required>
+            <input type="text" name="course_name" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter course name" required style="width: 20%;">
         </div>
 
         <div class="form-group">
@@ -32,23 +32,33 @@
             <?php }}?>
             </select>
         </div>
-        <!-- <div class="dropdown">
-        <label for="subject">Course:</label>
-        <select id="subject" name="course">
-            <option value="math">MBA</option>
-            <option value="science">B.Tech</option>
-            <option value="history">MCA</option>
-            <option value="english">BCA</option>
-            <option value="english">BBA</option>
-        </select>
-    </div> -->
+       
       
         <!-- <div class="form-group">
             <label for="exampleInputPassword1">Coordinator id</label>
             <input type="password" name="coordinator_id" class="form-control" id="exampleInputcourse1" placeholder="Enter your course id" required>
         </div> -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("exampleInputname").value;
+           
+            var namePattern = /^[A-Za-z\s]+$/;
+
+            
+
+            if (!namePattern.test(name)) {
+                alert("Name should contain only alphabets.");
+                return false;
+            }
+
+           
+
+            return true; 
+        }
+    </script>
 </body>
 
 </html>

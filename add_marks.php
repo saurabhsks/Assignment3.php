@@ -50,7 +50,7 @@
     $course_id=$_GET["course_id"];
 
     ?>
-    <form action="insert_marks.php?id=<?php echo $id?>" method="post">
+    <form action="insert_marks.php?id=<?php echo $id?>" method="post" onsubmit="return validateForm()">
 
    
     <div class="form-group">
@@ -70,12 +70,25 @@
 
         <div class="form-group">
             <label for="exampleInputEmail1">Marks</label>
-            <input type="text" name="marks" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your marks" required>
+            <input type="text" name="marks" class="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your marks" required style="width: 20%;">
         </div>
        
         <!-- <a href="insert_marks.php?id=<?php echo $id?>"> <button type="button" class="btn btn-danger">Submit</button></a> -->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <script>
+        function validateForm() {
+            var marks = document.getElementById("exampleInputname").value;
+            
+            if(marks<0 || marks>100){
+                alert("Please enter valid marks");
+                return false;
+            }
+         
+            return true; // Form will be submitted if both validations pass
+        }
+    </script>
 </body>
 
 </html>

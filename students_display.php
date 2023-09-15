@@ -42,10 +42,6 @@
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-
-
-    
-
 ?>
     <tr>
       <!-- <td><?php echo $row["id"]?></td> -->
@@ -112,7 +108,7 @@
 
 
 
- 
+
  <!-- <td><?php 
       $course=$row["course_id"];
       $sql="SELECT * FROM course WHERE  course.id=$course";

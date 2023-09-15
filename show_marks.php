@@ -12,22 +12,22 @@
      <title>Document</title>
  </head>
 
- <body>
+ <body >
  <?php
     $id=$_GET["id"];
     $course_id=$_GET["course_id"];
 ?>
 
-<table class="table">
+<table class="table" style="width: 40%; text-align: center; display: flex;justify-content: center; align-items: center;" >
   <thead>
     <tr>
       
-      <th scope="col">Name</th>
-      <th scope="col">Mobile</th>
-      <th scope="col">Course Name</th>
+      <th scope="col" style="width: 40%; text-align: center;">Name -</th></tr>
+      <tr> <th scope="col" style="width: 40%; text-align: center;">Mobile -</th></tr>
+      <tr> <th scope="col" style="width: 40%; text-align: center;">Course Name -</th></tr>
       
     
-    </tr>
+    
   </thead>
  
   <tbody>
@@ -51,9 +51,9 @@ $sql = "SELECT s.*, c.course_name
 
     <tr>
     
-      <td><?php echo $row["firstname"]?></td>
-      <td><?php echo $row["mobile"]?></td>
-      <td><?php echo $row["course_name"]?></td>
+      <td><?php echo $row["firstname"]?></td> </tr>
+      <tr><td><?php echo $row["mobile"]?></td> </tr>
+      <tr> <td><?php echo $row["course_name"]?></td>
       
     </tr>
 
@@ -65,13 +65,13 @@ $sql = "SELECT s.*, c.course_name
 </table>
 
 
-<table class="table">
-<hr style="border: 1px solid black; margin: 10px 0;">
+<table class="table" style="width: 40%; text-align: center;">
+<hr style="border: 1px solid black; margin: 10px 0; width: 40%;">
   <thead>
     <tr>
       
-      <th scope="col">Subject</th>
-      <th scope="col">Marks</th>
+      <th scope="col" style="width: 40%; text-align: center;">Subject</th>
+      <th scope="col" style="width: 40%; text-align: center;">Marks</th>
       
   
     </tr>
