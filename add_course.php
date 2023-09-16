@@ -41,7 +41,7 @@
         <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
 
-    <script>
+    <!-- <script>
         function validateForm() {
             var name = document.getElementById("exampleInputname").value;
            
@@ -58,7 +58,7 @@
 
             return true; 
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

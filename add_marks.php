@@ -81,6 +81,12 @@
         function validateForm() {
             var marks = document.getElementById("exampleInputname").value;
             
+            var namePattern = /^[A-Za-z\s]+$/;
+
+         if (namePattern.test(marks)) {
+          alert("marks should contain only digits.");
+           return false;
+        }
             if(marks<0 || marks>100){
                 alert("Please enter valid marks");
                 return false;

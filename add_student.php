@@ -58,9 +58,13 @@
 
             //  expression to check if the mobile number contains only digits and is 10 characters long
             var mobilePattern = /^\d{10}$/;
-
+            
             if (!namePattern.test(name)) {
                 alert("Name should contain only alphabets.");
+                return false;
+            }
+            if (namePattern.test(mobile)) {
+                alert("number should contain only digits.");
                 return false;
             }
 
