@@ -75,6 +75,9 @@
     <td>
         
        <a href="show_marks.php?id=<?php echo $row["id"]?> & course_id=<?php echo $row["course_id"]?>"> <button type="button" class="btn btn-success">Show Marks</button></a>
+
+       <button type="button" class="btn btn-warning" id="load-button" onclick="show(<?php echo $row["id"]?>,<?php echo $row["course_id"]?>)">Show Marks</button>
+
     </td>
     </tr>
 
@@ -85,6 +88,37 @@
     <tbody>
 </table>
 
+
+<div id="table-data">
+
+</div>
+<script>
+
+// $(document).ready(function(){
+//     $("#load-button").on("click" ,function(e){
+//         $ajax({
+//             url : "show_marks.php",
+//             type: "GET",
+//             success: function(data){
+//                 $("#table-data").html(data);
+//             }
+//         })
+//     })
+// })
+
+
+
+function show(id,course_id) {
+  
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("table-data").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "show_marks1.php?id="+id + "&course_id="+course_id);
+  xhttp.send();   
+}
+</script>
  </body>
 
  </html>

@@ -45,6 +45,7 @@ $sql = "SELECT s.*, c.course_name
 
  
    if (mysqli_num_rows($result) > 0) {
+    
         while ($row = mysqli_fetch_assoc($result)) {
 
        ?>
