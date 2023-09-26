@@ -41,24 +41,7 @@
         <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
 
-    <!-- <script>
-        function validateForm() {
-            var name = document.getElementById("exampleInputname").value;
-           
-            var namePattern = /^[A-Za-z\s]+$/;
-
-            
-
-            if (!namePattern.test(name)) {
-                alert("Name should contain only alphabets.");
-                return false;
-            }
-
-           
-
-            return true; 
-        }
-    </script> -->
+    
 </body>
 
 </html>
